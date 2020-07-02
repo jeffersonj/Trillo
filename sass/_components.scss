@@ -1,0 +1,453 @@
+/////////////////////////////////////////
+/// Logo
+.logo{
+    height: 3.25rem;
+    margin-left: 2rem;
+}
+
+/////////////////////////////////////////
+/// Search
+.search{
+    flex: 0 0 40%; //nao o ocupar todo o espaco //nao diminuir //ocupar 40% do espaco disponivel
+    
+    display: flex; //tornar um elemento flex um container flex ja centralizado no main axis (eixo x)
+    align-items: center; //centraliza os itens no cross axis (eixo y)
+    justify-content: center; //centraliza os itens no main axis (eixo x)
+
+    &__input{
+        font-family: inherit;
+        font-size: inherit;
+        color: inherit;
+        background-color: var(--color-grey-light-2);
+        border: none;
+        padding: .7rem 2rem;
+        border-radius: 100px;
+        width: 90%;
+        transition: all .2s;
+        margin-right: -3.25rem;
+
+        &:focus{
+            outline: none; //sem borda no foco
+            width: 100%;
+            background-color: var(--color-grey-light-3);
+        }
+
+        &::-webkit-input-placeholder{ //formatar placeholder
+            font-weight: 100;
+            color: var(--color-grey-light-4);
+        }
+    }
+
+    &__input:focus > &__button{ // > child selector
+        background-color: var(--color-grey-light-3);
+    }
+
+    &__button{
+        border: none;
+        background-color: var(--color-grey-light-2);
+
+        &:focus{
+            outline: none;
+        }
+
+        &:active{
+            transform: translateY(2px);
+        }
+    }
+
+    &__icon{
+        height: 2rem;
+        width: 2rem;
+        fill: var(--color-grey-dark-3)  //trocar a cor do icon em SVG
+    }
+}
+
+/////////////////////////////////////////
+/// User Navigation
+.user-nav{
+    align-self: stretch;    //auto alinhamento para ocupar todo o espaco disponivel
+
+    display: flex;
+    align-items: center;    //alinhamento dos itens verticalemente no centro
+
+    & > *{  //selecionar todos os elementos filhos
+        padding: 0 2rem;
+        cursor: pointer;
+
+        height: 100%;
+        display: flex;  //tornar cada elemento-filho um novo container
+        align-items: center;
+    }
+
+/////////////////////////////////////////
+///animacao menu no topo
+/*
+    & > *::before{
+        content: "";    //nao aparece no navegador, porem e necessario
+        position: absolute;
+        bottom: 0; //posiconamento abaixo
+        left: 0; //posicionamento à esquerda
+        height: 2px;   //tamanho
+        width: 100%; //largura - percorrer da esquerda para a direita
+        background-color: var(--color-primary); //cor
+
+        transform: scale(0);    //nao aparecer a linha fora do hover
+        transition: .6s;
+        transform-origin: left;   //define onde comecara a transformacao
+    }
+
+    & > *:hover::before{
+    transform: scaleX(1);
+    }
+*/
+
+    & > *:hover{
+        background-color: var(--color-grey-light-2);
+    }
+
+    &__icon-box{
+        position: relative;
+    }
+
+    &__icon{
+        height: 2.25rem;
+        width: 2.25rem;
+        fill: var(--color-grey-dark-2);
+    }
+
+    &__notification{
+        font-size: .8rem;
+        height: 1.75rem;
+        width: 1.75rem;
+        border-radius: 50%;
+        background-color: var(--color-primary);
+        color: #fff;
+        position: absolute;
+        top: 1.5rem;
+        right: 1.1rem;
+
+        //alinhar o texto ao centro tanto verticalmente quanto horizontalmente
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__user-photo{
+        height: 3.57rem;
+        border-radius: 50%;
+        margin-right: 1rem;
+    }
+}
+
+/////////////////////////////////////////
+/// Side Navigation
+.side-nav{
+    font-size: 1.4rem;
+    list-style: none;
+    margin-top: 3.5rem;
+
+    //estilizar o efeito do menu
+    &__item{
+        position: relative;
+
+        &:not(:last-child){ //aplicar o estilo para todos os itens exceto o ultimo
+            margin-bottom: .5rem;
+        }
+    }
+
+    &__item::before{
+        content: "";    //nao aparece no navegador, porem e necessario
+        position: absolute;
+        top: 0; //posiconamento ao topo
+        left: 0; //posicionamento à esquerda
+        height: 100%;   //tamanho
+        width: 3px; //largura
+        background-color: var(--color-primary); //cor
+
+        transform: scaleY(0);    //nao aparecer a linha fora do hover
+        transition: transform .2s, //a tranformacao acontecera em .2s
+                    width .4s cubic-bezier(1,0,0,1) .2s;    //o width acontecera em .4s usando cubic-bizer e com um atraso de .2s (comecara apos .2s)
+                    background-color: .1s;  //tempo de anic=macao do bg
+    }
+
+    &__item:hover::before,
+    &__item-active::before{
+        transform: scaleY(1);
+        width: 100%;
+    }
+
+    &__item:active::before{
+        background-color: var(--color-primary-light);
+    }
+
+    &__link:link,
+    &__link:visited{
+        color: var(--color-grey-light-1);
+        text-decoration: none;
+        text-transform: uppercase;
+        display: block;
+        padding: 1.5rem 3rem;
+
+        //a propriedade z-index funciona somente se houver position:absolute
+        position: relative;
+        z-index: 10;
+
+        display: flex;
+        align-items: center;    //alinhas os items verticalmente
+    }
+
+    &__icon{
+        width: 1.75rem;
+        height: 1.75rem;
+
+        margin-right: 2rem;
+        fill: currentColor; //herda a cor do pai e permite ser reusada em subclasses
+    }
+
+}
+
+/////////////////////////////////////////
+/// Legal Text
+.legal{
+    font-size: 1.2rem;
+    color: var(--color-grey-light-4);
+    text-align: center;
+    padding: 2.5rem;
+}
+
+/////////////////////////////////////////
+/// Hotel Gallery
+.gallery{
+    display: flex;  //alinha os elementos lado a lado
+
+    &__photo{
+        width: 100%;
+        display: block;
+    }
+}
+
+/////////////////////////////////////////
+/// Hotel Overview
+.overview{
+    display: flex;  //lado a lado
+    align-items: center;   //alinha todos os itens no centro no eixo x
+    border-bottom: var(--line);
+
+    &__heading{
+        font-size: 2.25rem;
+        font-weight: 300;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        padding: 1.5rem 3rem;   //margens de 1.5rem top e bottom / 3rem right e left
+    }
+
+    &__stars{
+        //flex: 1;    //permitir crescer todo o espaco disponivel
+        margin-right: auto; //truque do flexbox para ocupar somente a area necessaria para o conteudo sem usar o flex: 1;
+        display: flex;
+    }
+
+    &__icon-star,
+    &__icon-location{
+        width: 1.75rem;
+        height: 1.75rem;
+        fill: var(--color-primary);
+    }
+
+    &__location{
+        font-size: 1.2rem;
+        display: flex;
+        align-items: center;
+    }
+
+    &__icon-location{
+        margin-right: .5rem;
+    }
+
+    &__rating{
+        background-color: var(--color-primary);
+        color: #FFF;
+        margin-left: 3rem;
+        
+        display: flex;
+        flex-direction: column;
+        align-self: stretch;
+        align-items: center;
+        justify-content: center;
+        padding: 0 2rem;
+
+    }
+
+    &__rating-average{
+        font-size: 2.25rem;
+        font-weight: 300;
+        margin-bottom: -.3rem;
+    }
+
+    &__rating-count{
+        font-size: .8rem;
+        text-transform: uppercase;
+    }
+
+
+}
+
+/////////////////////////////////////////
+/// Button Inline
+.btn-inline{
+    border: none;
+    color: var(--color-primary);
+    font-size: inherit;
+    border-bottom: 1px solid currentColor;
+    padding-bottom: 2px;
+    display: inline-block;
+    background-color: transparent;
+    cursor: pointer;
+    transition: all .2s;
+    outline: none;
+
+    &:hover{
+        color: var(--color-grey-dark-1);
+        animation: pulsate 1s infinite;
+    }
+
+    &:focus{
+
+    }
+}
+
+@keyframes pulsate{
+    0%{
+        transform: scale(1);
+        box-shadow: none;
+    }
+
+    50%{
+        transform: scale(1.5);
+        box-shadow: 0 1rem 4rem rgba(0, 0, 0, .25);
+    }
+
+    100%{
+        transform: scale(1);
+        box-shadow: none;
+    }
+}
+
+/////////////////////////////////////////
+/// List
+.paragraph:not(:last-child){
+    margin-bottom: 2rem;    //incluir margem em todos os paragrafos, exceto no ultimo
+}
+
+/////////////////////////////////////////
+/// List
+.list{
+    list-style: none;
+    margin: 3rem 0;
+    padding: 3rem 0;
+    border-top: var(--line);
+    border-bottom: var(--line);
+
+    display: flex;
+    flex-wrap: wrap;    //colocar o conteudo lado a lado
+
+    &__item{
+        flex: 0 0 50%;
+        margin-bottom: .7rem;
+    }
+
+    &__item::before{    //subclasse que insere um svg antes do texto
+        content: "";
+        display: inline-block;
+        width: 1rem;
+        height: 1rem;
+        margin-right: .7rem;
+
+        //older browsers
+        //background-image: url(../img/chevron-thin-right.svg);
+        //background-size: cover;
+
+        //newer browsers - mark feature
+        background-color: var(--color-primary);
+        -webkit-mask-image: url(../img/chevron-thin-right.svg);
+        -webkit-mask-size: cover;
+        mask-image: url(../img/chevron-thin-right.svg);
+        mask-size: cover;
+    }
+}
+
+/////////////////////////////////////////
+/// Recommend
+.recommend{
+    font-size: 1.3rem;
+    color: var(--color-grey-dark-3);
+    display: flex;
+    align-items: center;
+
+    &__count{
+        margin-right: auto;
+    }
+
+    &__photo{
+        box-sizing: content-box;    //aumenta os elementos ao tamanho da caixa, deixando em cima da borda
+        height: 4rem;
+        width: 4rem;
+        border-radius: 50%;
+        border: 3px solid #fff;
+
+        &:not(:last-child){
+            margin-right: -1.5rem;
+        }
+    }
+}
+
+/////////////////////////////////////////
+/// Revies
+.review{
+    background-color: #fff;
+    box-shadow: var(--shadow-light);
+    padding: 3rem;
+    margin-bottom: 3.5rem;
+        
+    &__text{
+        margin-bottom: 2rem;
+    }
+
+    &__user{
+        display: flex;
+        align-items: center;
+    }
+
+    &__photo{
+        width: 4.5rem;
+        height: 4.5rem;
+        border-radius: 50%;
+        margin-right: 1.5rem;
+    }
+
+    &__user-box{
+        margin-right: auto;
+    }
+
+    &__user-name{
+        font-size: 1.1rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        margin-bottom: .4rem;
+    }
+
+    &__user-date{
+        font-size: 1rem;
+        color: var(--color-grey-dark-3);
+    }
+
+    &__rating{
+        color: var(--color-primary);
+        font-size: 2.2rem;
+        font-weight: 300;
+    }
+
+    &::before{
+        content: "\201C";
+    }
+}

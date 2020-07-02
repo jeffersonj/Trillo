@@ -1,0 +1,58 @@
+.container{
+    max-width: 120rem;
+    margin: 8rem auto;
+    background-color: var(--color-grey-light-2);
+    box-shadow: var(--shadow-dark);
+
+    min-height: 50rem;
+}
+
+.header{
+    font-size: 1.4rem;
+    display: flex; //colocar os elementos lado a lado
+    height: 7rem;
+    background-color: #fff;
+    border-bottom: var(--line);
+
+    justify-content: space-between;
+    align-items: center;
+}
+
+.content{
+    display: flex;
+}
+
+.sidebar{
+    background-color: var(--color-grey-dark-1);
+    flex: 0 0 18%;  //flex-grow: nao aumentar alem do definido //flex-shrink: nao encolher //flex-basis: largura de 18%
+
+    display: flex;  //colocar os elemento em linha no eixo x
+    flex-direction: column; //inverter para alinha no eixo y
+    justify-content: space-between; //justificar para que os elementos fiquem nas estremidades
+}
+
+.hotel-view{
+    background-color: #fff;
+    flex: 1;
+}
+
+.detail{
+    font-size: 1.4rem;
+    display: flex;
+    padding: 4.5rem;
+    background-color: var(--color-grey-light-1);
+    border-bottom: var(--line);
+}
+
+.description{
+    font-size: 1.4rem;
+    background-color: #fff;
+    flex: 0 0 60%;
+    margin-right: 4.5rem;
+    box-shadow: var(--shadow-light);
+    padding: 3rem;
+}
+
+.user-reviews{
+    flex: 1;
+}
