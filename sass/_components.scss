@@ -305,14 +305,23 @@
     cursor: pointer;
     transition: all .2s;
     outline: none;
+    
+    & span{
+        margin-left: 3px;
+        transition: margin-left .2s;
+    }
 
     &:hover{
         color: var(--color-grey-dark-1);
-        animation: pulsate 1s infinite;
+
+        span{
+            margin-left: 8px;
+        }
     }
 
     &:focus{
-
+        outline: none;
+        animation: pulsate 1s infinite;
     }
 }
 
@@ -323,7 +332,7 @@
     }
 
     50%{
-        transform: scale(1.5);
+        transform: scale(1.1);
         box-shadow: 0 1rem 4rem rgba(0, 0, 0, .25);
     }
 
@@ -408,9 +417,13 @@
     box-shadow: var(--shadow-light);
     padding: 3rem;
     margin-bottom: 3.5rem;
+    position: relative;
+    overflow: hidden;   //nao exibe o que exceder de conteudo em .review
         
     &__text{
         margin-bottom: 2rem;
+        z-index: 10;
+        position: relative;
     }
 
     &__user{
@@ -449,5 +462,13 @@
 
     &::before{
         content: "\201C";
+        position: absolute;
+        top: -2.75rem;
+        left: -1rem;
+        font-size: 20rem;
+        line-height: 1;
+        color: var(--color-grey-light-2);
+        font-family: sans-serif;
+        z-index: 1;
     }
 }
