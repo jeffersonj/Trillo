@@ -146,12 +146,25 @@
     list-style: none;
     margin-top: 3.5rem;
 
+    @media only screen and (max-width: $breakpoint-medium){
+        display: flex;
+        margin: 0;
+    }
+
     //estilizar o efeito do menu
     &__item{
         position: relative;
 
         &:not(:last-child){ //aplicar o estilo para todos os itens exceto o ultimo
             margin-bottom: .5rem;
+
+            @media only screen and (max-width: $breakpoint-medium){
+                margin: 0;
+            }
+        }
+
+        @media only screen and (max-width: $breakpoint-medium){
+            flex: 1;
         }
     }
 
@@ -194,6 +207,11 @@
 
         display: flex;
         align-items: center;    //alinhas os items verticalmente
+
+        @media only screen and (max-width: $breakpoint-medium){
+            justify-content: center;
+            padding: 2rem;
+        }
     }
 
     &__icon{
@@ -213,6 +231,10 @@
     color: var(--color-grey-light-4);
     text-align: center;
     padding: 2.5rem;
+
+    @media only screen and (max-width: $breakpoint-medium){
+        display: none;
+    }
 }
 
 /////////////////////////////////////////
@@ -397,6 +419,10 @@
         margin-right: auto;
     }
 
+    &__friends{
+        display: flex;
+    }
+
     &__photo{
         box-sizing: content-box;    //aumenta os elementos ao tamanho da caixa, deixando em cima da borda
         height: 4rem;
@@ -405,7 +431,7 @@
         border: 3px solid #fff;
 
         &:not(:last-child){
-            margin-right: -1.5rem;
+            margin-right: -2rem;
         }
     }
 }
@@ -419,6 +445,11 @@
     margin-bottom: 3.5rem;
     position: relative;
     overflow: hidden;   //nao exibe o que exceder de conteudo em .review
+
+    @media only screen and (max-width: $breakpoint-medium){
+        padding: 2rem;
+        margin-bottom: 3rem;
+    }
         
     &__text{
         margin-bottom: 2rem;
@@ -478,6 +509,10 @@
 .cta{
     padding: 3.5rem 0;
     text-align: center;
+
+    @media only screen and (max-width: $breakpoint-medium){
+        padding: 2.5rem 0;
+    }
 
     &__book-now{
         font-size: 2rem;
