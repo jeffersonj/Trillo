@@ -22,12 +22,19 @@
 
     justify-content: space-between;
     align-items: center;
+
+    @media only screen and (max-width: $breakpoint-smallest){
+        flex-wrap: wrap;    //quebra a linha quando nao houver mais espaco
+        align-content: space-around;
+        height: 11rem;
+    }
 }
 
 .content{
     display: flex;
 
     @media only screen and (max-width: $breakpoint-medium){
+        //alinhar o side-nav em colunas ao topo
         flex-direction: column;
     }
 }
@@ -56,6 +63,11 @@
     @media only screen and (max-width: $breakpoint-medium){
         padding: 3rem;
     }
+
+    @media only screen and (max-width: $breakpoint-small){
+        //alinhar os blocos em colunas
+        flex-direction: column;
+    }
 }
 
 .description{
@@ -69,6 +81,11 @@
     @media only screen and (max-width: $breakpoint-medium){
         padding: 2rem;
         margin-right: 3rem;
+    }
+
+    @media only screen and (max-width: $breakpoint-small){
+        margin-right: 0;
+        margin-bottom: 3rem;
     }
 }
 

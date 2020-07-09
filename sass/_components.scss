@@ -14,6 +14,11 @@
     align-items: center; //centraliza os itens no cross axis (eixo y)
     justify-content: center; //centraliza os itens no main axis (eixo x)
 
+    @media only screen and (max-width: $breakpoint-smallest){
+        order: 1;   //coloca o searchbar como ultimo item para que ele fique na proxima linha caso nao haja espaco suficiente
+        flex: 0 0 100%; //ocupa todo o espaco disponivel
+    }
+
     &__input{
         font-family: inherit;
         font-size: inherit;
@@ -212,6 +217,12 @@
             justify-content: center;
             padding: 2rem;
         }
+
+        @media only screen and (max-width: $breakpoint-small){
+            //alinhar os links em colunas
+            flex-direction: column;
+            padding: 1rem .5rem;
+        }
     }
 
     &__icon{
@@ -220,8 +231,15 @@
 
         margin-right: 2rem;
         fill: currentColor; //herda a cor do pai e permite ser reusada em subclasses
-    }
 
+        @media only screen and (max-width: $breakpoint-small){
+            //centralizar os icons
+            margin-right: 0;
+            margin-bottom: .7rem;
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+    }
 }
 
 /////////////////////////////////////////
@@ -261,6 +279,11 @@
         text-transform: uppercase;
         letter-spacing: 1px;
         padding: 1.5rem 3rem;   //margens de 1.5rem top e bottom / 3rem right e left
+
+        @media only screen and (max-width: $breakpoint-small){
+            font-size: 1.8rem;
+            padding: 1.25rem 2rem;
+        }
     }
 
     &__stars{
@@ -298,20 +321,29 @@
         justify-content: center;
         padding: 0 2rem;
 
+        @media only screen and (max-width: $breakpoint-small){
+            padding: 0 1.5rem;
+        }
     }
 
     &__rating-average{
         font-size: 2.25rem;
         font-weight: 300;
         margin-bottom: -.3rem;
+
+        @media only screen and (max-width: $breakpoint-small){
+            font-size: 1.8rem;
+        }
     }
 
     &__rating-count{
         font-size: .8rem;
         text-transform: uppercase;
+
+        @media only screen and (max-width: $breakpoint-small){
+            font-size: .5rem;
+        }
     }
-
-
 }
 
 /////////////////////////////////////////
@@ -395,15 +427,18 @@
         margin-right: .7rem;
 
         //older browsers
-        //background-image: url(../img/chevron-thin-right.svg);
-        //background-size: cover;
+        background-image: url(../img/chevron-thin-right.svg);
+        background-size: cover;
 
-        //newer browsers - mark feature
-        background-color: var(--color-primary);
-        -webkit-mask-image: url(../img/chevron-thin-right.svg);
-        -webkit-mask-size: cover;
-        mask-image: url(../img/chevron-thin-right.svg);
-        mask-size: cover;
+        //newer browsers - mask feature
+        @supports(-webkit-mask-image: url()) or (mask-image: url()){
+            background-color: var(--color-primary);
+            -webkit-mask-image: url(../img/chevron-thin-right.svg);
+            -webkit-mask-size: cover;
+            mask-image: url(../img/chevron-thin-right.svg);
+            mask-size: cover;
+            background-image: none;
+        }
     }
 }
 
